@@ -1,0 +1,28 @@
+{
+  "name": "enewp",
+  "version": "0.0.1",
+  "description": "写着玩",
+  "main": "app.js",
+  "scripts": {
+    "start": "nodemon ./app.js"
+  },
+  "keywords": [
+    "es6",
+    "npm",
+    "express",
+    "wabpack",
+    "promise"
+  ],
+  "author": "lz",
+  "license": "ISC",
+  "dependencies": {
+    "bcrypt": "^5.1.1",
+    "bcryptjs": "^3.0.2",
+    "cros": "^1.0.1",
+    "express": "^4.21.2",
+    "express-session": "^1.18.1",
+    "jsonwebtoken": "^9.0.2",
+    "mysql": "^2.18.1",
+    "redis": "^4.7.0"
+  }
+}

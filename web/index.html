@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>发帖网站首页</title>
+    <link rel="stylesheet" href="./assents/index.css">
+</head>
+
+<body>
+    <!-- 导航栏 -->
+    <nav>
+        <div class="nav-left">
+            <div class="nav-logo">发帖网站</div>
+            <ul class="nav-links">
+                <li><a href="./index.html">首页</a></li>
+                <li><a href="#">热门</a></li>
+                <li><a href="#">最新</a></li>
+            </ul>
+        </div>
+        <div class="nav-right">
+            <!-- 未登录状态 -->
+            <a class="nav-login" href="./login.html">登录</a>
+            <a class="nav-register" href="./reg.html">注册</a>
+            <!-- 登录后状态，可根据实际情况切换显示 -->
+            <!-- <span>用户名</span>
+            <img class="nav-avatar" src="https://dummyimage.com/40x40/000/fff" alt="Avatar"> -->
+        </div>
+    </nav>
+
+    <!-- 帖子列表 -->
+    <div class="post-list">
+        <div class="post">
+            <div class="post-title">这是一个很长很长的帖子标题，只显示一行多余省略</div>
+            <div class="post-content">这是帖子的内容，这是帖子的内容，这是帖子的内容，这是帖子的内容，这是帖子的内容，这是帖子的内容，这是帖子的内容，这是帖子的内容。</div>
+            <div class="post-images">
+                <img class="post-image" src="https://dummyimage.com/100x100/000/fff" alt="Post Image">
+                <img class="post-image" src="https://dummyimage.com/100x100/000/fff" alt="Post Image">
+            </div>
+        </div>
+        <div class="post">
+            <div class="post-title">另一个帖子标题</div>
+            <div class="post-content">这是另一个帖子的内容，这是另一个帖子的内容，这是另一个帖子的内容，这是另一个帖子的内容。</div>
+            <div class="post-images">
+                <img class="post-image" src="https://dummyimage.com/100x100/000/fff" alt="Post Image">
+            </div>
+        </div>
+    </div>
+
+    <!-- 图片放大弹窗 -->
+    <div id="myModal" class="image-modal">
+        <span class="close">&times;</span>
+        <img class="modal-content" id="img01">
+    </div>
+
+    <script>
+        // 获取模态框和关闭按钮
+        var modal = document.getElementById('myModal');
+        var closeBtn = document.getElementsByClassName("close")[0];
+        var modalImg = document.getElementById("img01");
+
+        // 获取所有缩略图
+        var thumbnails = document.getElementsByClassName('post-image');
+
+        // 为每个缩略图添加点击事件
+        for (var i = 0; i < thumbnails.length; i++) {
+            thumbnails[i].addEventListener('click', function () {
+                modal.style.display = "block";
+                modalImg.src = this.src;
+            });
+        }
+
+        // 点击关闭按钮关闭模态框
+        closeBtn.addEventListener('click', function () {
+            modal.style.display = "none";
+        });
+
+        // 点击模态框外部关闭模态框
+        window.addEventListener('click', function (event) {
+            if (event.target == modal) {
+                modal.style.display = "none";
+            }
+        });
+    </script>
+</body>
+
+</html>
