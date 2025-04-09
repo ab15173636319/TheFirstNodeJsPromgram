@@ -1,11 +1,12 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="zh-cn">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>发帖网站首页</title>
     <link rel="stylesheet" href="./assents/index.css">
+    <link rel="stylesheet" href="./assents/commom.css">
 </head>
 
 <body>
@@ -21,31 +22,18 @@
         </div>
         <div class="nav-right">
             <!-- 未登录状态 -->
-            <a class="nav-login" href="./login.html">登录</a>
-            <a class="nav-register" href="./reg.html">注册</a>
-            <!-- 登录后状态，可根据实际情况切换显示 -->
-            <!-- <span>用户名</span>
-            <img class="nav-avatar" src="https://dummyimage.com/40x40/000/fff" alt="Avatar"> -->
-        </div>
+            <div class="nav-right-bth" id="nav-right-bth">
+                <a class="nav-login" href="./login.html">登录</a>
+                <a class="nav-register" href="./reg.html">注册</a>
+            </div>
+            <div class="nav-right-info" id="nav-right-info" style="display: none;">
+              
+            </div>
     </nav>
 
     <!-- 帖子列表 -->
-    <div class="post-list">
-        <div class="post">
-            <div class="post-title">这是一个很长很长的帖子标题，只显示一行多余省略</div>
-            <div class="post-content">这是帖子的内容，这是帖子的内容，这是帖子的内容，这是帖子的内容，这是帖子的内容，这是帖子的内容，这是帖子的内容，这是帖子的内容。</div>
-            <div class="post-images">
-                <img class="post-image" src="https://dummyimage.com/100x100/000/fff" alt="Post Image">
-                <img class="post-image" src="https://dummyimage.com/100x100/000/fff" alt="Post Image">
-            </div>
-        </div>
-        <div class="post">
-            <div class="post-title">另一个帖子标题</div>
-            <div class="post-content">这是另一个帖子的内容，这是另一个帖子的内容，这是另一个帖子的内容，这是另一个帖子的内容。</div>
-            <div class="post-images">
-                <img class="post-image" src="https://dummyimage.com/100x100/000/fff" alt="Post Image">
-            </div>
-        </div>
+    <div class="post-list" id="post">
+
     </div>
 
     <!-- 图片放大弹窗 -->
@@ -53,7 +41,10 @@
         <span class="close">&times;</span>
         <img class="modal-content" id="img01">
     </div>
-
+    <script src="https://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js">
+    </script>
+    <script src="./assents/commom.js"></script>
+    <script src="./assents/index.js"></script>
     <script>
         // 获取模态框和关闭按钮
         var modal = document.getElementById('myModal');

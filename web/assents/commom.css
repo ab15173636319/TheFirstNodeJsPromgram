@@ -1,0 +1,39 @@
+ * {
+     margin: 0;
+     padding: 0;
+     box-sizing: border-box;
+ }
+
+ /* 提示框基本样式 */
+ .toast {
+     position: fixed;
+     top: -100px;
+     left: 50%;
+     transform: translateX(-50%);
+     padding: 15px 30px;
+     border-radius: 5px;
+     color: white;
+     font-size: 16px;
+     z-index: 9999;
+     transition: top 0.5s ease;
+ }
+
+ /* 成功提示框样式 */
+ .toast.success {
+     background-color: #28a745;
+ }
+
+ /* 错误提示框样式 */
+ .toast.error {
+     background-color: #dc3545;
+ }
+
+ /* 警告提示框样式 */
+ .toast.warning {
+     background-color: #ffc107;
+ }
+
+ /* 一般提示框样式 */
+ .toast.info {
+     background-color: #17a2b8;
+ }

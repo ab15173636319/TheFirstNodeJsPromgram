@@ -7,4 +7,6 @@ const artCateHandler = require("../router_handler/artcate");
 
 router.get("/getArtcle", artCateHandler.getArtCate);
 
+router.get("/getArtcleById", artCateHandler.queryAuthor);
+
 module.exports = router;

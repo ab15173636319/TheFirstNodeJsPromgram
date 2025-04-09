@@ -31,7 +31,7 @@ exports.getArtCate = (req, res) => {
   // 构建排序语句
   const orderBy = `ORDER BY ${desc}`;
 
-  const sql = `SELECT * FROM article WHERE title LIKE ? OR content LIKE ? OR author LIKE ? ${orderBy} LIMIT ?,?`;
+  const sql = `SELECT article.*, user_table.nickname AS author_nickname FROM article join user_table on article.author=user_table.uid  WHERE title LIKE ? OR content LIKE ? OR author LIKE ? ${orderBy} LIMIT ?,?`;
 
   // 获取请求参数
   const search = req.query.search_content || ""; // 搜索关键字
@@ -51,6 +51,7 @@ exports.getArtCate = (req, res) => {
         console.log("查询失败", err);
         return res.status(500).json({ message: "查询失败" });
       }
+
       // 查询总数
       const sqlCount =
         "SELECT COUNT(*) as total FROM article WHERE title LIKE ? OR content LIKE ? OR author LIKE ?";
@@ -80,4 +81,36 @@ exports.getArtCate = (req, res) => {
       );
     }
   );
+};
+
+exports.addartcle = (req, res) => {
+  const { title, content, time, author, cate_id, status } = req.body;
+  const sql =
+    "INSERT INTO article (title, content, time, author, cate_id, status) VALUES (?, ?, ?, ?, ?, ?)";
+  db.query(
+    sql,
+    [title, content, time, author, cate_id, status],
+    (err, results) => {
+      if (err) {
+        console.log("添加文章失败", err);
+        return res.status(500).json({ message: "添加文章失败" });
+      }
+      res.status(200).json({ code: 200, message: "添加文章成功" });
+    }
+  );
+};
+
+exports.queryAuthor = (req, res) => {
+  const sql = "SELECT * FROM user_table WHERE uid= ?";
+  db.query(sql, [req.userInfo.uid], (err, results) => {
+    if (err) {
+      console.log("查询作者失败", err);
+      return res.status(500).json({ message: "查询作者失败" });
+    }
+    res.status(200).json({
+      code: 200,
+      message: "查询作者成功",
+      data: results[0],
+    });
+  });
 };

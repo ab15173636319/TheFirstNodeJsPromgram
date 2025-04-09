@@ -13,13 +13,13 @@ app.use(express.urlencoded({ extended: false }));
 const whiteList = ["/user/login", "/user/register"];
 const authenticateToken = (req, res, next) => {
   // 检查请求是否为get请求，请求路径是否为白名单
-  console.log(req.method);
-  
+
   if (req.method === "GET" || whiteList.includes(req.path)) {
     return next();
   }
 
   const authorization = req.headers["authorization"];
+
   // 检查请求头是否存在
   if (!authorization) {
     return res.json({ code: 401, success: false, message: "未提供令牌" });

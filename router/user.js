@@ -88,8 +88,9 @@ router.use(isLoggedIn);
 
 // 登录
 router.post("/login", (req, res) => {
-  var username = req.query.username;
-  var password = req.query.password;
+  var username = req.body.username;
+  var password = req.body.password;
+
   var sql = "select * from user_table where username = ? and password = ?";
   connection.query(sql, [username, password], (err, result) => {
     if (err) throw err;
